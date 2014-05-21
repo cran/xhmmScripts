@@ -8,6 +8,10 @@ readNamedMatrix <- function(matFile, what=double()) {
 	#return(m)
 	#
 
+        READ_MAT_FILE = paste("cat ", matFile, sep="")
+        if (regexpr("\\.gz$", matFile) > 0) {
+            READ_MAT_FILE = paste("gzip -cd ", matFile, sep="")
+        }
 
 	############################
 	# AS IN XHMM C++ CODE:
@@ -15,7 +19,7 @@ readNamedMatrix <- function(matFile, what=double()) {
 	############################
 
 
-	getDims = paste("cat ", matFile, " | awk -F'\t' '{print NF}' | sort | uniq -c | awk '{print $1,$2}'", sep="")
+	getDims = paste(READ_MAT_FILE, " | awk -F'\t' '{print NF}' | sort | uniq -c | awk '{print $1,$2}'", sep="")
 	dimsVec = system(getDims, intern=TRUE)
 	if (length(dimsVec) != 1) {
 		stop(paste("Cannot read jagged matrix: ", matFile, sep=""))
@@ -28,7 +32,7 @@ readNamedMatrix <- function(matFile, what=double()) {
 	writeLines(paste("Reading ", rows, " x ", cols, " named matrix", sep=""))
 
 	n = rows * cols
-	readMat = paste("awk -F'\t' 'BEGIN{OFS=\"\t\"} {$1=\"\"; print gensub(\"^\"OFS\"+\", \"\", \"G\", $_)}' ", matFile, sep="")
+	readMat = paste(READ_MAT_FILE, " | awk -F'\t' 'BEGIN{OFS=\"\t\"} {$1=\"\"; print gensub(\"^\"OFS\"+\", \"\", \"G\", $_)}' ", sep="")
 
 	if (log2(n) < 31) {
 		con <- pipe(readMat)
@@ -45,12 +49,12 @@ readNamedMatrix <- function(matFile, what=double()) {
 		}
 	}
 
-	readColNames = paste("awk -F'\t' 'BEGIN{OFS=\"\t\"} {$1=\"\"; print gensub(\"^\"OFS\"+\", \"\", \"G\", $_); exit}' ", matFile, sep="")
+	readColNames = paste(READ_MAT_FILE, " | awk -F'\t' 'BEGIN{OFS=\"\t\"} {$1=\"\"; print gensub(\"^\"OFS\"+\", \"\", \"G\", $_); exit}' ", sep="")
 	con <- pipe(readColNames)
 	colnames(m) = scan(con, what="", quiet=TRUE, sep="\t")
 	close(con)
 
-	readRowNames = paste("awk -F'\t' 'BEGIN{OFS=\"\t\"} {if (NR > 1) print $1}' ", matFile, sep="")
+	readRowNames = paste(READ_MAT_FILE, " | awk -F'\t' 'BEGIN{OFS=\"\t\"} {if (NR > 1) print $1}' ", sep="")
 	con <- pipe(readRowNames)
 	rownames(m) = scan(con, what="", quiet=TRUE, sep="\t")
 	close(con)

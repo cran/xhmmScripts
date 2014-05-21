@@ -13,7 +13,7 @@ readNamedMatrix(matFile, what = double())
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{matFile}{
-%%     ~~Describe \code{matFile} here~~
+If \code{matFile} ends in '.gz', then this file will be read as a gzip-ed text file.
 }
   \item{what}{
 %%     ~~Describe \code{what} here~~

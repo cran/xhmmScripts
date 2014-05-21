@@ -308,7 +308,7 @@ XHMM_plots <- function(PLOT_PATH, JOB_PREFICES, JOB_TARGETS_TO_GENES=NULL, SAMPL
 	
 				chrom_start_stop = targetsToChrBp1Bp2(interval)
 				MARK_INTERVALS=list()
-				MARK_INTERVALS[[paste("XHMM ", type, " (", numTargets, " targets)", sep="")]] = list(as.numeric(chrom_start_stop["start"]), as.numeric(chrom_start_stop["stop"]), col="black", cex=0.8)
+				MARK_INTERVALS[[paste("XHMM ", type, " (", numTargets, " targets)", sep="")]] = list(as.numeric(chrom_start_stop$bp1), as.numeric(chrom_start_stop$bp2), col="black", cex=0.8)
 	
 				for (addTargs in c(0, NUM_ADD_TARGS)) {
 					start_stop_inds = regionToStartStopInds(xhmm_data[[job]], interval, NUM_ADD_TARGS=addTargs)

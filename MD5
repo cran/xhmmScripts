@@ -1,12 +1,12 @@
-d6f7856cc94f8df82c2f8cea96c08ad4 *DESCRIPTION
+15d0eb982a236f7b86eca3e3febadc27 *DESCRIPTION
 1d8340796b75aebac6e98934d0d8edc7 *NAMESPACE
 67cbe2c1c21e5de3ae2efac06bd068f8 *R/XHMM_functions.R
-759075776fcf9e2cc4c8354d5b04fafd *R/XHMM_plots.R
+a1b976bdb3ef6448b76896db579f9a6d *R/XHMM_plots.R
 f695d95495d14bc5dd6abf385e0d986f *R/loadNamedVectorNoHeaderMayNotExist.R
 c3cbda806792d416db519293d03e8f9f *R/loadPseqSampleMetaData.R
 fe10fa71e6dacd223accd98d18ec51ef *R/loadTargetsToGenes.R
 f265d4b28be16a891f30e6ebe3fcfa26 *R/plotCNV.R
-15d7c57ddefa3f65bfe5853ea79ece47 *R/readNamedMatrix.R
+eee2f407a244fa0671826f9da8acaa37 *R/readNamedMatrix.R
 9d74e3077014dba679e7c9d76111c3bb *R/scanVectorMayNotExist.R
 f25492df034e64f07b3928383121ebce *R/sourceDir.R
 22bd30ac98500701e6a3f7c7ea29b317 *man/XHMM_plots.Rd
@@ -22,7 +22,7 @@ ee83538eca2138c9d5dd2b05f58c0e16 *man/phenotypeDataToBinarySampleProperties.Rd
 8557e73770db4a7c2d48550d7f3611c6 *man/plot_XHMM_genes.Rd
 07aa7822410c505ba5e10ea72ebb1759 *man/plot_XHMM_region.Rd
 795886c2c6d8d49bda3756763710b989 *man/plot_XHMM_targets.Rd
-a614ba0c96f77a2c3a5e3b9a4bed3109 *man/readNamedMatrix.Rd
+cff0f3a591a38e44784ab448c0162b9c *man/readNamedMatrix.Rd
 4eafee483a5a85ea4d6eef913c717805 *man/readPedigreeFile.Rd
 8419bd070658fb8cbd5b19681a1db9c2 *man/readPhenotypesFile.Rd
 bcfd3d600974a759e04242b4c1dfa375 *man/scanVectorMayNotExist.Rd
